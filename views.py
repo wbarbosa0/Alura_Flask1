@@ -65,7 +65,7 @@ def logout():
 @app.route('/editar/<int:id>')
 def editar(id):
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return redirect(url_for('login', proxima=url_for('editar')))
+        return redirect(url_for('login', proxima=url_for('editar', id=id)))
     jogo = jogo_dao.busca_por_id(id)
     nome_imagem = recupera_imagem(id)
     return render_template('editar.html', titulo='Editando Jogo', jogo=jogo
